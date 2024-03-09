@@ -11,31 +11,53 @@ import { Route, Routes } from "react-router-dom";
 function App() {
   const queryParameters = new URLSearchParams(window.location.search);
   const name = queryParameters.get("name");
-
-  const [selectedComponent, setSelectedComponent] = useState("Main");
+  const [selectedComponent, setSelectedComponent] = useState("");
 
   return (
     <>
-      <nav>
-        <button onClick={() => setSelectedComponent("Main")}>Main Page</button>
-        <button onClick={() => setSelectedComponent("Planets")}>Planets</button>
-        <a href="/Planets">...Planets url</a>
-        <button onClick={() => setSelectedComponent("Starships")}>
+      <nav className="nav">
+        <li
+          className="homeButton"
+          onClick={(e) => {
+            e.preventDefault();
+            window.location.href = "./";
+          }}
+        >
+          Home
+        </li>
+        <li
+          className="planetButton"
+          onClick={(e) => {
+            e.preventDefault();
+            window.location.href = "./planets";
+          }}
+        >
+          Planets
+        </li>
+        <li
+          onClick={(e) => {
+            e.preventDefault();
+            window.location.href = "./starships";
+          }}
+          className="starshipButton"
+        >
           Starships
-        </button>
-        <button onClick={() => setSelectedComponent("People")}>People</button>
-        <button onClick={() => setSelectedComponent("Peopledetail")}>
-          People detail
-        </button>
+        </li>
+        <li
+          onClick={(e) => {
+            e.preventDefault();
+            window.location.href = "./people";
+          }}
+          className="peoplepButton"
+        >
+          People
+        </li>
       </nav>
-      <div id="ctn-main">
-        {selectedComponent === "Main" && <Main />}
-        {selectedComponent === "Planets" && <Planets />}
-        {selectedComponent === "Starships" && <Starships />}
-        {selectedComponent === "People" && <People />}
-        {selectedComponent === "Peopledetail" && <PeopleDetail name={name} />}
 
+      <div id="ctn-main">
+        {selectedComponent === "Main" && !name ? <Main /> : ""}
         <Routes>
+          <Route path="/" Component={() => <Main />} />
           <Route path="/planets" Component={() => <Planets />} />
           <Route path="/starships" Component={() => <Starships />} />
           <Route path="/people" Component={() => <People />} />
@@ -43,12 +65,6 @@ function App() {
             path="/Peopledetail"
             Component={() => <PeopleDetail name={name} />}
           />
-          {/* <Route
-            path="/Peopledetail/:name"
-            render={( match: any ) => (
-              <PeopleDetail item={data.find((item : any) => String(item.id) === String(match.params.name))} />
-            )}
-          /> */}
         </Routes>
       </div>
     </>

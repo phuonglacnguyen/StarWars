@@ -29,14 +29,14 @@ function Planets() {
   }
 
   const allPlanetsOnPage = starWarsDataPlanets.map((planet: any) => {
-    console.log(planet);
-
     return (
-      <div className="card card-planet">
-        <h2 key={planet.name}>{planet.name}</h2>
+      <div key={planet.url} className="card card-planet">
+        <h2>{planet.name}</h2>
+        <p>Population: {planet.population}</p>
+        <p>Rotation period: {planet.rotation_period}</p>
+        <p>Gravity: {planet.gravity}</p>
         <p>Climate: {planet.climate}</p>
         <p>Terrain: {planet.terrain}</p>
-        <p>Population: {planet.population}</p>
         <br />
       </div>
     );
@@ -44,8 +44,16 @@ function Planets() {
 
   return (
     <div>
+      <h1 className="main-title">STAR WARS</h1>
       <h1 className="txt-shadow-gold">Planets</h1>
       <main>{allPlanetsOnPage}</main>
+      <button
+        onClick={() =>
+          (document.body.scrollTop = document.documentElement.scrollTop = 0)
+        }
+      >
+        Top
+      </button>
     </div>
   );
 }

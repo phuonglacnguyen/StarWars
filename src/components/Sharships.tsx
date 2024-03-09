@@ -29,11 +29,9 @@ function Starships() {
   }
 
   const allStarshipsOnPage = starWarsDataStarships.map((Starship: any) => {
-    console.log(Starship);
-
     return (
-      <div className="card card-starships">
-        <h2 key={Starship.name}>{Starship.name}</h2>
+      <div key={Starship.url} className="card card-starships">
+        <h2>{Starship.name}</h2>
         <p>Manufacturer: {Starship.manufacturer}</p>
         <p>Cost in credits: {Starship.cost_in_credits}</p>
         <p>Length: {Starship.length}</p>
@@ -48,8 +46,16 @@ function Starships() {
 
   return (
     <div>
+      <h1 className="main-title">STAR WARS</h1>
       <h1 className="txt-shadow-red">Starships</h1>
       <main>{allStarshipsOnPage}</main>
+      <button
+        onClick={() =>
+          (document.body.scrollTop = document.documentElement.scrollTop = 0)
+        }
+      >
+        Top
+      </button>
     </div>
   );
 }

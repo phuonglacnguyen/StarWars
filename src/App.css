@@ -1,21 +1,18 @@
 
 body {
-	background-color: #333;
+	background-color: #000;
 	color: whitesmoke;
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	background: url("https://cdn.pixabay.com/photo/2016/11/29/05/45/astronomy-1867616_960_720.jpg")
-		no-repeat center center fixed;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
 	font-family: "Archivo", sans-serif;
 }
 
+a {
+  cursor: pointer;
+}
+
 nav {
-	height: 75px;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
@@ -47,15 +44,16 @@ button:hover {
 .main-title {
 	color: gold;
 	text-align: center;
+  padding-top: 20px;
 }
 
 #ctn-main {
-	margin-top: 100px;
+	margin-top: 60px;
 	text-align: center;
 }
 
 .card {
-	border-radius: 25px;
+	border-radius: 6px;
 	background-color: rgba(0, 0, 0, 0.9);
 	width: 300px;
 	min-width: 300px;
@@ -63,25 +61,113 @@ button:hover {
 	text-align: center;
 	margin: 15px;
 	padding: 5px;
+  vertical-align: top;
+  cursor: crosshair;
+}
+
+.homeButton {
+  background-color: #ffffff;
+  list-style-type: none;
+  color: #000000;
+  width: 25%;
+}
+
+.homeButton:hover {
+  background-color: #666666;
+  color: #ffffff;
+}
+
+.planetButton {
+  background-color: #F49D20;
+  list-style-type: none;
+  color: #FFECBF;
+  width: 25%;
+}
+
+.planetButton:hover {
+  background-color: #FFECBF;
+  color: #F49D20;
+}
+
+.starshipButton {
+  background-color: #1C4632;
+  list-style-type: none;
+  color: #CFF7DA;
+  width: 25%;
+}
+
+.starshipButton:hover {
+  background-color: #CFF7DA;
+  color: #1C4632;
+}
+
+.peoplepButton {
+  background-color: #431A38;
+  list-style-type: none;
+  color: #F7CFD1;
+  width: 25%;
+}
+
+.peoplepButton:hover {
+  background-color: #F7CFD1;
+  color: #000000;
+}
+
+.card-films {
+	border: 3px solid #ffffff;
+	text-shadow: 1px 1px 1px #ffffff;
+  background-color: #ffffff;
+	display: inline-block;
+  color: #000000;
+}
+
+.card-films:hover {
+  background-color: #cccccc;
 }
 
 .card-planet {
-	border: 3px solid gold;
-	text-shadow: 1px 1px 1px gold;
+	border: 3px solid #F49D20;
+	text-shadow: 1px 1px 1px #F49D20;
+  background-color: #F49D20;
 	display: inline-block;
+  color: #FFECBF;
+}
+
+.card-planet:hover {
+  background-color: #f7b150;
 }
 
 .card-starships {
-	border: 3px solid red;
-	text-shadow: 1px 1px 1px red;
+	border: 3px solid #1C4632;
+	text-shadow: 1px 1px 1px #1C4632;
+  background-color: #1C4632;
 	display: inline-block;
 	flex: 1;
+  color: #CFF7DA;
 }
 
 .card-people {
-	border: 3px solid blue;
-	text-shadow: 1px 1px 1px blue;
+	border: 3px solid #431A38;
+	text-shadow: 1px 1px 1px #431A38;
+  background-color: #431A38;
 	display: inline-block;
+  padding-bottom: 20px;
+  color: #F7CFD1;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+li {
+  cursor: pointer;
+  padding: 20px;
+}
+
+h1 {
+  margin: 0px 0px 20px 0px;
 }
 
 .overlay {
@@ -99,19 +185,24 @@ button:hover {
 
 
 button {
-  padding: 4px;
+  padding: 8px;
+  border-radius: 6px;
+}
+
+input {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ffffff;
+  margin: 0px 10px 0px 0px;
+}
+
+select {
+  padding: 8px;
+  border-radius: 6px;
 }
 
 @media only screen and (max-width: 1000px) {
 	body {
 		font-size: x-large;
 	}
-	nav {
-		height: 125px;
-	}
-
-	h1 {
-		margin-top: 150px;
-	}
-
 }

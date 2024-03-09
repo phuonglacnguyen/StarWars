@@ -12,6 +12,17 @@ const PeopleDetail = ({ name }: Props) => {
   const [starWarsDataPeople, setStarWarsDataPeople] = useState([]);
   const [urlPeople, setUrlPeople] = useState(`https://swapi.info/api/people`);
 
+  const [starWarsDataPlanets, setStarWarsDataPlanets] = useState([]);
+  const [urlPlanets, setUrlPlanets] = useState(
+    `https://swapi.info/api/planets`
+  );
+
+  useEffect(() => {
+    axios.get(urlPlanets).then((response) => {
+      setStarWarsDataPlanets(response.data);
+    });
+  }, [urlPlanets]);
+
   useEffect(() => {
     axios.get(urlFilms).then((response) => {
       setStarWarsDataFilms(response.data);
@@ -21,28 +32,17 @@ const PeopleDetail = ({ name }: Props) => {
   useEffect(() => {
     axios.get(urlPeople).then((response) => {
       setStarWarsDataPeople(response.data);
-      //console.log(response.data);
     });
   }, [urlPeople]);
-  //const [films, setFilms] = useState([]);
-
-  starWarsDataFilms.map((film: any) => {
-    //if (film.name === name) {
-    //console.log(film.title);
-    //}
-  });
 
   let separator = "<br>";
   let moviesTitle: any = [];
   starWarsDataPeople.map((people: any) => {
     if (people.name === name) {
       Object.keys(people.films).forEach(function (key) {
-        //console.log(people.films[key]);
         starWarsDataFilms.map((film: any) => {
           if (people.films[key] === film.url) {
-            //console.log(film.title);
             moviesTitle.push(film.title);
-            //document.getElementById('films')?.innerHTML = film.title + '<br />';
           }
         });
       });
@@ -66,9 +66,13 @@ const PeopleDetail = ({ name }: Props) => {
           )}
         </p>
         <p>
-          Home world :{" "}
+          Planet:{" "}
           {starWarsDataPeople.map((people: any) =>
-            people.name === name ? people.homeworld : ""
+            starWarsDataPlanets.map((planet: any) =>
+              planet.url === people.homeworld && people.name === name
+                ? planet.name
+                : ""
+            )
           )}
         </p>
         <p>
@@ -80,6 +84,15 @@ const PeopleDetail = ({ name }: Props) => {
             people.name === name ? people.created : ""
           )}
         </p>
+
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            window.location.href = "./people";
+          }}
+        >
+          &lt;&lt; Back
+        </button>
       </div>
     </>
   );
