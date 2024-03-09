@@ -33,7 +33,7 @@ function People() {
     });
   }, [urlPeople]);
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: any) => {
     const searchTerm = e.target.value;
     setSearchItem(searchTerm);
     setStarWarsDataPeople(starWarsDataOriginalPeople);
