@@ -35,6 +35,8 @@ function People() {
 
   const handleInputChange = (e: any) => {
     const searchTerm = e.target.value;
+    let searchInput = document.getElementById("search")?.getAttribute("value");
+    //console.log(searchInput);
     setSearchItem(searchTerm);
     setStarWarsDataPeople(starWarsDataOriginalPeople);
     let filteredItems = starWarsDataPeople.filter((user: any) =>
@@ -47,7 +49,7 @@ function People() {
       console.log("reset people ...#FFECBF", starWarsDataPeople);
     }
     setFilteredUsers(filteredItems);
-    console.log(filteredItems);
+    //console.log(filteredItems);
   };
 
   if (isLoading) {
@@ -69,7 +71,6 @@ function People() {
     let filteredPlanets = starWarsDataPeople.filter(
       (people: any) => people.homeworld === planet
     );
-    console.log(filteredPlanets);
     if (!filteredPlanets.length) {
       console.log("Nothing");
     } else {
@@ -106,10 +107,12 @@ function People() {
       <h1 className="main-title">STAR WARS</h1>
       <h1 className="txt-shadow-blue">People</h1>
       <input
+        id="search"
         type="text"
         onChange={handleInputChange}
         placeholder="Type to search"
       />
+
       <select
         onChange={(e) => {
           setSelectedPlanets(e.target.value);

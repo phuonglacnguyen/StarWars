@@ -26,6 +26,7 @@ function Main() {
   return (
     <main className="center txt-shadow-red">
       <h1 className="main-title">STAR WARS</h1>
+      <h1 className="txt-shadow-gold">Films</h1>
       {allFilmsOnPage}
     </main>
   );

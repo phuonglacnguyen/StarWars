@@ -23,7 +23,7 @@ function App() {
             window.location.href = "./";
           }}
         >
-          Home
+          Films
         </li>
         <li
           className="planetButton"

@@ -44,7 +44,7 @@ button:hover {
 .main-title {
 	color: gold;
 	text-align: center;
-  padding-top: 20px;
+  padding-top: 30px;
 }
 
 #ctn-main {
@@ -58,11 +58,16 @@ button:hover {
 	width: 300px;
 	min-width: 300px;
 	text-wrap: wrap;
-	text-align: center;
+	text-align: left;
 	margin: 15px;
-	padding: 5px;
+	padding: 0px 10px 10px 10px;
   vertical-align: top;
   cursor: crosshair;
+}
+
+.card p {
+  margin: 0px;
+  padding: 0px;
 }
 
 .homeButton {
@@ -126,7 +131,7 @@ button:hover {
 }
 
 .card-planet {
-	border: 3px solid #F49D20;
+	border: 3px solid #FFECBF;
 	text-shadow: 1px 1px 1px #F49D20;
   background-color: #F49D20;
 	display: inline-block;
@@ -134,11 +139,11 @@ button:hover {
 }
 
 .card-planet:hover {
-  background-color: #f7b150;
+  background-color: #f39006;
 }
 
 .card-starships {
-	border: 3px solid #1C4632;
+	border: 3px solid #CFF7DA;
 	text-shadow: 1px 1px 1px #1C4632;
   background-color: #1C4632;
 	display: inline-block;
@@ -146,13 +151,21 @@ button:hover {
   color: #CFF7DA;
 }
 
+.card-starships:hover {
+  background-color: #153526;
+}
+
 .card-people {
-	border: 3px solid #431A38;
+	border: 3px solid #F7CFD1;
 	text-shadow: 1px 1px 1px #431A38;
   background-color: #431A38;
 	display: inline-block;
   padding-bottom: 20px;
   color: #F7CFD1;
+}
+
+.card-people:hover {
+  background-color: #301329;
 }
 
 ul {
@@ -163,7 +176,7 @@ ul {
 
 li {
   cursor: pointer;
-  padding: 20px;
+  padding: 20px 10px;
 }
 
 h1 {

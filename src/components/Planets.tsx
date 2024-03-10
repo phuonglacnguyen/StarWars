@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import axios from "axios";
 // console.log(React);
 function Planets() {
@@ -28,11 +28,20 @@ function Planets() {
     );
   }
 
+  function numberFormatting(number: string) {
+    if (number === "unknown") {
+      return number;
+    } else {
+      const numberToDisplay = new Intl.NumberFormat().format(parseInt(number));
+      return numberToDisplay;
+    }
+  }
+
   const allPlanetsOnPage = starWarsDataPlanets.map((planet: any) => {
     return (
       <div key={planet.url} className="card card-planet">
         <h2>{planet.name}</h2>
-        <p>Population: {planet.population}</p>
+        <p>Population: {numberFormatting(planet.population)}</p>
         <p>Rotation period: {planet.rotation_period}</p>
         <p>Gravity: {planet.gravity}</p>
         <p>Climate: {planet.climate}</p>
