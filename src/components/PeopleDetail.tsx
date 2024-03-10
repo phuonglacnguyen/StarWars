@@ -51,8 +51,15 @@ const PeopleDetail = ({ name }: Props) => {
 
   return (
     <>
+      <h1 className="main-title">STAR WARS</h1>
       <div className="card card-people">
         <h2>Name : {name}</h2>
+        <p>
+          Weight :{" "}
+          {starWarsDataPeople.map((people: any) =>
+            people.name === name ? people.mass : ""
+          )}
+        </p>
         <p>
           Year :{" "}
           {starWarsDataPeople.map((people: any) =>
@@ -63,6 +70,12 @@ const PeopleDetail = ({ name }: Props) => {
           Gender :{" "}
           {starWarsDataPeople.map((people: any) =>
             people.name === name ? people.gender : ""
+          )}
+        </p>
+        <p>
+          Hair color :{" "}
+          {starWarsDataPeople.map((people: any) =>
+            people.name === name ? people.hair_color : ""
           )}
         </p>
         <p>

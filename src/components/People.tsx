@@ -33,22 +33,22 @@ function People() {
     });
   }, [urlPeople]);
 
-  // const handleInputChange = (e: any) => {
-  //   const searchTerm = e.target.value;
-  //   setSearchItem(searchTerm);
-  //   setStarWarsDataPeople(starWarsDataOriginalPeople);
-  //   let filteredItems = starWarsDataPeople.filter((user: any) =>
-  //     user.name.toLowerCase().includes(searchTerm.toLowerCase())
-  //   );
-  //   if (filteredItems.length > 0) {
-  //     //   setStarWarsDataPeople(starWarsDataSearchPeople);
-  //     setStarWarsDataPeople(filteredItems);
-  //   } else {
-  //     console.log("reset people ...#FFECBF", starWarsDataPeople);
-  //   }
-  //   setFilteredUsers(filteredItems);
-  //   console.log(filteredItems);
-  // };
+  const handleInputChange = (e: any) => {
+    const searchTerm = e.target.value;
+    setSearchItem(searchTerm);
+    setStarWarsDataPeople(starWarsDataOriginalPeople);
+    let filteredItems = starWarsDataPeople.filter((user: any) =>
+      user.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    if (filteredItems.length > 0) {
+      //   setStarWarsDataPeople(starWarsDataSearchPeople);
+      setStarWarsDataPeople(filteredItems);
+    } else {
+      console.log("reset people ...#FFECBF", starWarsDataPeople);
+    }
+    setFilteredUsers(filteredItems);
+    console.log(filteredItems);
+  };
 
   if (isLoading) {
     return (
@@ -105,7 +105,11 @@ function People() {
     <div>
       <h1 className="main-title">STAR WARS</h1>
       <h1 className="txt-shadow-blue">People</h1>
-      <input type="text" placeholder="Type to search" />
+      <input
+        type="text"
+        onChange={handleInputChange}
+        placeholder="Type to search"
+      />
       <select
         onChange={(e) => {
           setSelectedPlanets(e.target.value);
