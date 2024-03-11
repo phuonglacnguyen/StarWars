@@ -1,5 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
 
 function People() {
   const [searchItem, setSearchItem] = useState("");
@@ -36,20 +40,21 @@ function People() {
   const handleInputChange = (e: any) => {
     const searchTerm = e.target.value;
     let searchInput = document.getElementById("search")?.getAttribute("value");
-    //console.log(searchInput);
+    if (searchTerm === "") {
+      setSearchItem("");
+      setStarWarsDataPeople(starWarsDataOriginalPeople);
+    }
     setSearchItem(searchTerm);
     setStarWarsDataPeople(starWarsDataOriginalPeople);
-    let filteredItems = starWarsDataPeople.filter((user: any) =>
+    let filteredItems = starWarsDataOriginalPeople.filter((user: any) =>
       user.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
     if (filteredItems.length > 0) {
-      //   setStarWarsDataPeople(starWarsDataSearchPeople);
       setStarWarsDataPeople(filteredItems);
     } else {
       console.log("reset people ...#FFECBF", starWarsDataPeople);
     }
     setFilteredUsers(filteredItems);
-    //console.log(filteredItems);
   };
 
   if (isLoading) {
@@ -57,8 +62,6 @@ function People() {
       <div>
         <div>
           <h1 className="txt-shadow-blue">People</h1>
-          <button disabled={true}>⏪ Previous Page</button>
-          <button disabled={true}>Next Page⏩</button>
         </div>
         <div className="overlay">Loading...</div>
       </div>
@@ -72,7 +75,7 @@ function People() {
       (people: any) => people.homeworld === planet
     );
     if (!filteredPlanets.length) {
-      console.log("Nothing");
+      // console.log("Nothing");
     } else {
       setStarWarsDataPeople(filteredPlanets);
     }
@@ -89,14 +92,17 @@ function People() {
             planet.url === people.homeworld ? planet.name : ""
           )}
         </p>
-        <a
+        <br />
+        <Button
+          variant="outlined"
+          href="#outlined-buttons"
           onClick={(e) => {
             e.preventDefault();
             window.location.href = `/peopledetail?name=${people.name}`;
           }}
         >
-          &gt;&gt; more
-        </a>
+          More ...
+        </Button>
         <br />
       </div>
     );
@@ -106,35 +112,32 @@ function People() {
     <div>
       <h1 className="main-title">STAR WARS</h1>
       <h1 className="txt-shadow-blue">People</h1>
-      <input
-        id="search"
-        type="text"
+
+      <TextField
+        id="outlined-basic"
+        className="searchField"
+        label="Search by name"
+        variant="outlined"
         onChange={handleInputChange}
-        placeholder="Type to search"
       />
 
-      <select
-        onChange={(e) => {
+      <Select
+        id="demo-simple-select"
+        className="filterPlanet"
+        onChange={(e: any) => {
           setSelectedPlanets(e.target.value);
         }}
       >
-        <option>Filter by planet</option>
         {starWarsDataPlanets.map((planet: any) => (
-          <option key={planet.url} value={planet.url}>
+          <MenuItem key={planet.url} value={planet.url}>
             {planet.name}
-          </option>
+          </MenuItem>
         ))}
-      </select>
+      </Select>
+
       <br />
       <br />
       <main>{allPeopleOnPage}</main>
-      <button
-        onClick={() =>
-          (document.body.scrollTop = document.documentElement.scrollTop = 0)
-        }
-      >
-        Top
-      </button>
     </div>
   );
 }

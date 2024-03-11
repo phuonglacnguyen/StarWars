@@ -177,10 +177,36 @@ ul {
 li {
   cursor: pointer;
   padding: 20px 10px;
+  font-size: 22px;
 }
 
 h1 {
   margin: 0px 0px 20px 0px;
+}
+
+.nav svg {
+  float: left;
+  margin-right: 10px;
+}
+
+#root .searchField, #root .filterPlanet {
+  background-color: #ffffff;
+  border-radius: 6px;
+  margin-right: 10px;
+  width: 200px;
+  text-align: left;
+}
+
+.autocomplete {
+  background-color: #fff;
+  padding: 0px;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.MuiInputBase-root {
+  padding: 0px;
+  margin: 0px;
 }
 
 .overlay {
@@ -214,8 +240,12 @@ select {
   border-radius: 6px;
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 800px) {
 	body {
 		font-size: x-large;
 	}
+
+  .main-title {
+    padding-top: 50px;
+  }
 }

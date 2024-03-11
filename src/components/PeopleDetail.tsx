@@ -1,5 +1,6 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import Button from "@mui/material/Button";
 
 interface Props {
   name: string | null;
@@ -88,24 +89,28 @@ const PeopleDetail = ({ name }: Props) => {
             )
           )}
         </p>
+        <br />
         <p>
           Films :<span id="films">{moviesTitle.join(", ")}</span>
         </p>
+        <br />
         <p>
           Created :{" "}
           {starWarsDataPeople.map((people: any) =>
             people.name === name ? people.created : ""
           )}
         </p>
-
-        <button
+        <br />
+        <Button
+          variant="outlined"
+          href="#outlined-buttons"
           onClick={(e) => {
             e.preventDefault();
             window.location.href = "./people";
           }}
         >
-          &lt;&lt; Back
-        </button>
+          Back
+        </Button>
       </div>
     </>
   );

@@ -19,6 +19,8 @@ function Main() {
         <p>Release date: {film.release_date}</p>
         <p>Episode: {film.episode_id}</p>
         <br />
+        <p>{film.opening_crawl}</p>
+        <br />
       </div>
     );
   });

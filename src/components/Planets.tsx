@@ -20,8 +20,6 @@ function Planets() {
       <div>
         <div>
           <h1 className="txt-shadow-gold">Planets</h1>
-          <button disabled={true}>⏪ Previous Page</button>
-          <button disabled={true}>Next Page⏩</button>
         </div>
         <div className="overlay">Loading...</div>
       </div>

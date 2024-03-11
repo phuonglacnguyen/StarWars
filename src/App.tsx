@@ -1,5 +1,4 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
 import "./App.css";
 import Main from "./components/Main";
 import Planets from "./components/Planets";
@@ -7,6 +6,10 @@ import Starships from "./components/Sharships";
 import People from "./components/People";
 import PeopleDetail from "./components/PeopleDetail";
 import { Route, Routes } from "react-router-dom";
+import MovieFilterIcon from "@mui/icons-material/MovieFilter";
+import ManageAccountsOutlinedIcon from "@mui/icons-material/ManageAccountsOutlined";
+import RocketLaunchIcon from "@mui/icons-material/RocketLaunch";
+import PublicIcon from "@mui/icons-material/Public";
 
 function App() {
   const queryParameters = new URLSearchParams(window.location.search);
@@ -23,7 +26,7 @@ function App() {
             window.location.href = "./";
           }}
         >
-          Films
+          <MovieFilterIcon /> Films
         </li>
         <li
           className="planetButton"
@@ -32,7 +35,7 @@ function App() {
             window.location.href = "./planets";
           }}
         >
-          Planets
+          <PublicIcon /> Planets
         </li>
         <li
           onClick={(e) => {
@@ -41,7 +44,7 @@ function App() {
           }}
           className="starshipButton"
         >
-          Starships
+          <RocketLaunchIcon /> Starships
         </li>
         <li
           onClick={(e) => {
@@ -50,7 +53,7 @@ function App() {
           }}
           className="peoplepButton"
         >
-          People
+          <ManageAccountsOutlinedIcon /> People
         </li>
       </nav>
 
