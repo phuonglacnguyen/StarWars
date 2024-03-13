@@ -1,9 +1,24 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, ChangeEvent } from "react";
 import axios from "axios";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
+
+interface user {
+  name: string;
+}
+
+interface people {
+  homeworld: string;
+  name: string;
+  gender: string;
+}
+
+interface planet {
+  name: string;
+  url: string;
+}
 
 function People() {
   const [searchItem, setSearchItem] = useState("");
@@ -37,7 +52,7 @@ function People() {
     });
   }, [urlPeople]);
 
-  const handleInputChange = (e: any) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const searchTerm = e.target.value;
     let searchInput = document.getElementById("search")?.getAttribute("value");
     if (searchTerm === "") {
@@ -46,7 +61,7 @@ function People() {
     }
     setSearchItem(searchTerm);
     setStarWarsDataPeople(starWarsDataOriginalPeople);
-    let filteredItems = starWarsDataOriginalPeople.filter((user: any) =>
+    let filteredItems = starWarsDataOriginalPeople.filter((user: user) =>
       user.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
     if (filteredItems.length > 0) {
@@ -72,23 +87,21 @@ function People() {
     setSelectedPlanet(planet);
     setStarWarsDataPeople(starWarsDataOriginalPeople);
     let filteredPlanets = starWarsDataPeople.filter(
-      (people: any) => people.homeworld === planet
+      (people: people) => people.homeworld === planet
     );
-    if (!filteredPlanets.length) {
-      // console.log("Nothing");
-    } else {
+    if (filteredPlanets.length) {
       setStarWarsDataPeople(filteredPlanets);
     }
   }
 
-  let allPeopleOnPage = starWarsDataPeople.map((people: any) => {
+  let allPeopleOnPage = starWarsDataPeople.map((people: people) => {
     return (
       <div key={people.name} className="card card-people">
         <h2>{people.name}</h2>
         <p>Gender: {people.gender}</p>
         <p>
           Planet:{" "}
-          {starWarsDataPlanets.map((planet: any) =>
+          {starWarsDataPlanets.map((planet: planet) =>
             planet.url === people.homeworld ? planet.name : ""
           )}
         </p>
@@ -107,6 +120,10 @@ function People() {
       </div>
     );
   });
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    // Do something
+  };
 
   return (
     <div>
@@ -128,7 +145,7 @@ function People() {
           setSelectedPlanets(e.target.value);
         }}
       >
-        {starWarsDataPlanets.map((planet: any) => (
+        {starWarsDataPlanets.map((planet: planet) => (
           <MenuItem key={planet.url} value={planet.url}>
             {planet.name}
           </MenuItem>

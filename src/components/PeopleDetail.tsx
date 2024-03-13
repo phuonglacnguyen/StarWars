@@ -6,6 +6,32 @@ interface Props {
   name: string | null;
 }
 
+interface people {
+  homeworld: string;
+  name: string;
+  gender: string;
+  mass: number;
+  birth_year: string;
+  hair_color: string;
+  url: string;
+  created: string;
+  films: string[];
+}
+
+interface planet {
+  name: string;
+  url: string;
+}
+
+interface film {
+  url: string;
+  title: string;
+}
+
+class moviesTitle {
+  async save() {}
+}
+
 const PeopleDetail = ({ name }: Props) => {
   const [starWarsDataFilms, setStarWarsDataFilms] = useState([]);
   const [urlFilms, setUrlFilms] = useState(`https://swapi.info/api/films`);
@@ -41,7 +67,7 @@ const PeopleDetail = ({ name }: Props) => {
   starWarsDataPeople.map((people: any) => {
     if (people.name === name) {
       Object.keys(people.films).forEach(function (key) {
-        starWarsDataFilms.map((film: any) => {
+        starWarsDataFilms.map((film: film) => {
           if (people.films[key] === film.url) {
             moviesTitle.push(film.title);
           }
@@ -57,32 +83,32 @@ const PeopleDetail = ({ name }: Props) => {
         <h2>Name : {name}</h2>
         <p>
           Weight :{" "}
-          {starWarsDataPeople.map((people: any) =>
+          {starWarsDataPeople.map((people: people) =>
             people.name === name ? people.mass : ""
           )}
         </p>
         <p>
           Year :{" "}
-          {starWarsDataPeople.map((people: any) =>
+          {starWarsDataPeople.map((people: people) =>
             people.name === name ? people.birth_year : ""
           )}
         </p>
         <p>
           Gender :{" "}
-          {starWarsDataPeople.map((people: any) =>
+          {starWarsDataPeople.map((people: people) =>
             people.name === name ? people.gender : ""
           )}
         </p>
         <p>
           Hair color :{" "}
-          {starWarsDataPeople.map((people: any) =>
+          {starWarsDataPeople.map((people: people) =>
             people.name === name ? people.hair_color : ""
           )}
         </p>
         <p>
           Planet:{" "}
-          {starWarsDataPeople.map((people: any) =>
-            starWarsDataPlanets.map((planet: any) =>
+          {starWarsDataPeople.map((people: people) =>
+            starWarsDataPlanets.map((planet: planet) =>
               planet.url === people.homeworld && people.name === name
                 ? planet.name
                 : ""
@@ -96,7 +122,7 @@ const PeopleDetail = ({ name }: Props) => {
         <br />
         <p>
           Created :{" "}
-          {starWarsDataPeople.map((people: any) =>
+          {starWarsDataPeople.map((people: people) =>
             people.name === name ? people.created : ""
           )}
         </p>
